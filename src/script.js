@@ -30,18 +30,17 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 
-// Time
-let time = Date.now();
+// Clock
+const clock = new THREE.Clock();
 
 // Animations
 const tick = () => {
-  // Time - Allows the spin speed to be independent of frame rate
-  const currentTime = Date.now();
-  const deltaTime = currentTime - time;
-  time = currentTime;
+  // Clock
+  const elapsedTime = clock.getElapsedTime();
+  console.log(elapsedTime);
 
   // Update Objects
-  mesh.rotation.y += 0.002 * deltaTime;
+  mesh.rotation.y = elapsedTime;
 
   // Render
   renderer.render(scene, camera);
